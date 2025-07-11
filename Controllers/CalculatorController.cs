@@ -1,5 +1,4 @@
-﻿using CalculatorMVC.Models.Views;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
 namespace CalculatorMVC.Controllers
