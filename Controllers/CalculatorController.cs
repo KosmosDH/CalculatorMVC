@@ -40,18 +40,26 @@ namespace CalculatorMVC.Controllers
         public IActionResult Calculate(decimal a, decimal b, string operation)
         {
             decimal result = 0;
-            if (operation == "+")
-                result = a + b;
-            else if (operation == "-")
-                result = a - b;
-            else if (operation == "*")
-                result = a * b;
-            else if (operation == "/")
+            switch (operation)
             {
-                if (b == 0)
-                    return Content("<h1>Infinite</h1>", "text/html", Encoding.UTF8);
-                result = a / b;
+                case "+":
+                    result = a + b;
+                    break;
+                case "-":
+                    result = a - b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                case "/":
+                    if (b == 0)
+                        return Content("<h1>Infinite</h1>", "text/html", Encoding.UTF8);
+                    result = a / b;
+                    break;
+                default:
+                    return Content("<h1>Incorrect input</h1>", "text/html", Encoding.UTF8);
             }
+            
             string html = $"<p>{a} {operation} {b} = {result}</p>";
             return Content(html, "text/html", Encoding.UTF8);
         }
